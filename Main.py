@@ -51,7 +51,7 @@ x_test2 = Process.AveragePooling(x_test)
 x_test3 = Process.calculate_histogram(x_test)
  
  
-k_values = list(range(1, 300, 25))
+k_values = list(range(1, 50, 1))
 accuracies1 = []
 accuracies2 = []
 accuracies3 = []
@@ -70,7 +70,7 @@ for k in k_values:
     accuracies1.append(acc1)
     accuracies2.append(acc2)
     accuracies3.append(acc3)
- 
+
  
 plt.figure(figsize=(10, 6))
 plt.plot(k_values, accuracies1, marker='o', linestyle='-', color='b', label="Vectorization")
@@ -80,7 +80,7 @@ plt.plot(k_values, accuracies3, marker='^', linestyle=':', color='g', label="His
  
 plt.xlabel("k (Number of Neighbors)", fontsize=12)
 plt.ylabel("Accuracy (%)", fontsize=12)
-plt.title("Comparison of Accuracy vs. k for Different Methods", fontsize=14)
+plt.title("Accuracy of 100 first x_test.", fontsize=14)
  
  
 plt.grid(True, linestyle='--', alpha=0.7)
