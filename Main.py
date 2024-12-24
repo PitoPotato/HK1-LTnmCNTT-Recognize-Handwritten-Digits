@@ -58,7 +58,7 @@ plt.plot(k_values, accuracies3, marker='^', linestyle=':', color='g', label="His
  
 plt.xlabel("k (Number of Neighbors)", fontsize=12)
 plt.ylabel("Accuracy (%)", fontsize=12)
-plt.title("Accuracy of modal ?.", fontsize=14)
+plt.title("Accuracy of 3 modals.", fontsize=14)
  
  
 plt.grid(True, linestyle='--', alpha=0.7)
