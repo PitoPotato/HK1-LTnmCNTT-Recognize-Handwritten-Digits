@@ -11,20 +11,20 @@ import Globals
 #------------------------------------
 
 
-# Cách 1
+# Cách 1 vectorization
 def vectorization(array):
     newArray = array.reshape(-1, Globals.IMG_SIZE * Globals.IMG_SIZE)
     newArray = np.array([each.flatten() for each in array])
     return newArray
  
-# Cách 2
+# Cách 2 average pooling
 def AveragePooling(array):
     pooling_layer = tf.keras.layers.AveragePooling2D(pool_size=(4, 4))
     array = pooling_layer(array.reshape(-1, 28, 28, 1)).numpy()
     array = array.reshape(array.shape[0], -1)
     return array
  
-# Cách 3
+# Cách 3 histogram
 def calculate_histogram(array, num_bins=32):
     histograms = np.zeros((array.shape[0], num_bins), dtype=np.float64)
     for i, img in enumerate(array):
@@ -32,9 +32,11 @@ def calculate_histogram(array, num_bins=32):
         histograms[i] = hist
     return histograms
 
+# tính khoảng cách euclidean
 def euclidean_distance(x1, x2):
     return np.sqrt(np.sum((x1 - x2) ** 2, axis=1))
- 
+
+# KNN
 def knn(x_train, y_train, x_test, k):
     predictions = []
     for test_sample in x_test:
@@ -49,6 +51,7 @@ def knn(x_train, y_train, x_test, k):
  
     return np.array(predictions)
 
+# KNN mới (tối ưu hóa)
 def new_knn(x_train, y_train, x_test, k):
     predictions = []
     for test_sample in x_test:
@@ -63,6 +66,7 @@ def new_knn(x_train, y_train, x_test, k):
     
     return np.array(predictions)
 
+# Tách dữ liệu theo nhãn
 def split_by_label(x_train, y_train):
     labels = np.unique(y_train)
     split_data = {label: x_train[y_train == label] for label in labels}
